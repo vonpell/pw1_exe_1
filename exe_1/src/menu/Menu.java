@@ -26,7 +26,6 @@ public class Menu {
             aux += enum_menu.getValor() + " - " + enum_menu.getDescricao() + '\n';
         }
 
-
         while (true) {
             int opcao = Integer.parseInt(JOptionPane.showInputDialog(null, aux));
             switch (opcao) {
@@ -59,7 +58,7 @@ public class Menu {
                                 Agencia agenciaAux2 = new Agencia();
                                 for (Agencia agencia : agencias) {
                                     if (agAux2 == agencia.getNumero()) {
-                                        agenciaAux = agencia;
+                                        agenciaAux2 = agencia;
                                     }
                                 }
                                 double limite = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor do limite: "));
@@ -95,11 +94,10 @@ public class Menu {
                     long procuraNumCpf = Long.parseLong(JOptionPane.showInputDialog("Informe o número do CPF: "));
                     int procuraDigitoCpf = Integer.parseInt(JOptionPane.showInputDialog("Informe o dígito do CPF: "));
                     flag = false;
-                    Cpf procuraCpf = new Cpf(procuraNumCpf, procuraDigitoCpf);
                     for (ClientePessoaFisica clientePessoaFisica : listaClientes) {
                         if (clientePessoaFisica != null) {
                             System.out.println(clientePessoaFisica.getCpf());
-                            if (procuraCpf.equals(clientePessoaFisica.getCpf())) {
+                            if (new Cpf(procuraNumCpf, procuraDigitoCpf).equals(clientePessoaFisica.getCpf())) {
                                 flag = true;
                                 JOptionPane.showMessageDialog(null, "CPF encontrado, pertence a: " +
                                         clientePessoaFisica.getNome());
